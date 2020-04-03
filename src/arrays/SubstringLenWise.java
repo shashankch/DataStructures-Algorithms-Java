@@ -3,7 +3,6 @@ package arrays;
 public class SubstringLenWise {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		String str = "pqrs";
 		int n = str.length();

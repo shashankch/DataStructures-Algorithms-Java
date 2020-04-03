@@ -3,7 +3,7 @@ package arrays;
 public class ReverseWordWise {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		String input = "Welcome to Coding Ninjas";
 		int n = input.length();
 
