@@ -31,7 +31,7 @@ public class sumlinked {
     }
     
 
-    publc 
+  
 
 
 
