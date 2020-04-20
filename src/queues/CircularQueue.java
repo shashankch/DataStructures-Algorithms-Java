@@ -33,7 +33,8 @@ public class CircularQueue {
     public void enqueue(int element) throws Exception {
 
         if (size == data.length) {
-            throw new Exception();
+            //throw new Exception();
+            doublecapacity();
         }
 
         if (size == 0) {
@@ -79,4 +80,27 @@ public class CircularQueue {
 
     }
 
+    private void doublecapacity() {
+        
+        int temp[] = data;
+        data = new int[2 * temp.length];
+        int index = 0;
+        for (int i = front; i < temp.length; i++) {
+            data[index++] = temp[i];
+        }
+        for (int i = 0; i < front - 1; i++) {
+            data[index++] = temp[i];
+        }
+
+        front = 0;
+        rear = temp.length - 1;
+
+    }
+
+
+
+
 }
+
+// size=rear-front+1
+// size=sizeofarray-(front-rear)+1
