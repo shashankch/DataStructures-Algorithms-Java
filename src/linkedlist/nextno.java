@@ -3,16 +3,22 @@ package linkedlist;
 class node {
     int data;
     node next;
+    node prev;
 
     public node(int data) {
         this.data = data;
         this.next = null;
+        this.prev = null;
     }
 }
 
 public class nextno {
 
     public static node reverse(node head) {
+
+        if (head == null || head.next == null) {
+            return head;
+        }
 
         node curr = head;
         node prev = null, fwd = null;
@@ -52,22 +58,23 @@ public class nextno {
             node newnode = new node(carry);
             prev.next = newnode;
             prev = newnode;
+
         }
 
-        return prev;
+        return reverse(rev);
 
     }
 
     public static void main(String[] args) {
 
-        node one = new node(9);
-        node two = new node(9);
+        node one = new node(3);
+        node two = new node(7);
         one.next = two;
         node head = one;
         node ans = nextnumber(head);
         node temp = ans;
         while (temp != null) {
-            System.out.println(temp.data + "->");
+            System.out.print(temp.data + "->");
             temp = temp.next;
 
         }
