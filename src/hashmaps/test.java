@@ -1,7 +1,10 @@
 package hashmaps;
 
+
 import java.util.HashMap;
 import java.util.Set;
+import java.util.Map.Entry;;
+
 
 public class test {
 
@@ -26,7 +29,11 @@ public class test {
             System.out.println(str);
         }
 
-        
+        for (Entry<String, Integer> mp : map.entrySet()) {
+            System.out.println(mp.getKey() + " " + mp.getValue());
+        }
+
+
     }
 
 
