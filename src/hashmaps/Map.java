@@ -10,7 +10,7 @@ public class Map<K, V> {
 
     public Map() {
         buckets = new ArrayList<>();
-        numBuckets = 20;
+        numBuckets = 5;
         for (int i = 0; i < numBuckets; i++) {
             buckets.add(null);
         }
@@ -70,6 +70,11 @@ public class Map<K, V> {
 
         return null;
 
+    }
+
+    public double loadfactor() {
+        double loadfactor = (count * 1.0) / numBuckets;
+        return loadfactor;
     }
 
     public V removeKey(K key) {
