@@ -65,5 +65,48 @@ public class impl {
     }
 
 
+    public void remove(TrieNode root, String word) {
+
+        if (word.length() == 0) {
+            root.isTerminating = false;
+            return;
+        }
+        int childIndex = word.charAt(0) - 'a';
+        TrieNode child = root.children[childIndex];
+        if (child == null) {
+            return;
+        }
+
+
+        remove(child, word.substring(1));
+
+        // after all is done terminating is set to false here char are still
+        // present in the trie in order to delete those parent will decide whether to delete
+        // child or not.
+        // only if it non terminal and no. of children is zero...
+        if (!child.isTerminating) {
+
+            int numChild = 0;
+
+            for (int i = 0; i < 26; i++) {
+                // count no. of child..
+                if (child.children[i] != null) {
+                    numChild++;
+                }
+            }
+
+            if (numChild == 0) {
+                // delete child now..
+                // here garbage collector in java free up  the node not referred by any.
+                // here node is referred by root children node array so we set to null/
+                root.children[childIndex] = null;
+                // child = null; not needed. scope is in func.
+            }
+        }
+
+
+    }
+
+
 
 }
