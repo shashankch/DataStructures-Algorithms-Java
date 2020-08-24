@@ -23,7 +23,7 @@ public class convertStringcaseDP {
 
                 if (dp[i][j]) {
 
-                    if (j <= m && Character.toUpperCase(a.charAt(i)) == b.charAt(j)) {
+                    if (j < m && Character.toUpperCase(a.charAt(i)) == b.charAt(j)) {
 
                         dp[i + 1][j + 1] = true;
 
@@ -50,17 +50,17 @@ public class convertStringcaseDP {
     }
 
 
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
+        int n = Integer.parseInt(sc.nextLine());
         while (n-- > 0) {
-            String a = sc.next();
+            String a = sc.nextLine();
 
-            String b = sc.next();
-
+            String b = sc.nextLine();
+            // System.out.println(a+" "+b);
             boolean ans = helper(a, b);
 
             if (ans) {
