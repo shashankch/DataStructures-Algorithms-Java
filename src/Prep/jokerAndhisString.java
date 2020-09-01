@@ -2,7 +2,7 @@ package Prep;
 
 public class jokerAndhisString {
 
-https://www.hackerearth.com/practice/algorithms/string-algorithm/string-searching/practice-problems/algorithm/joker-and-his-string/description/
+//https://www.hackerearth.com/practice/algorithms/string-algorithm/string-searching/practice-problems/algorithm/joker-and-his-string/description/
 
     
 
