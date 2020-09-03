@@ -65,6 +65,31 @@ public class tripletsum {
 
     }
 
+    public static void tripletfun2(int[] input, int x) {
+
+        Arrays.sort(input);
+        for (int i = 0; i < input.length; i++) {
+
+            for (int j = i + 1; j < input.length; j++) {
+
+                for (int k = j + 1; k < input.length; k++) {
+
+                    if (input[i] + input[j] + input[k] == x) {
+
+                        System.out.println(input[i] + " " + input[j] + " " + input[k]);
+
+                    }
+
+
+                }
+            }
+
+
+        }
+
+
+    }
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);

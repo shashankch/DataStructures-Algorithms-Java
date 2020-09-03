@@ -1,6 +1,7 @@
 package LeetcodeQuestions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class subsets {
@@ -42,6 +43,7 @@ public class subsets {
         return result;
     }
 
+    // Method 2----------->
     // O(N*2^N)
     public static List<List<Integer>> helper2(int arr[]) {
 
@@ -63,6 +65,42 @@ public class subsets {
 
 
     }
+
+// Method 3--------->
+
+    public List<List<Integer>> helper3(int[] nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        Arrays.sort(nums);
+        backtrack(list, new ArrayList<>(), nums, 0);
+        return list;
+    }
+
+public void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums,
+        int start) {
+    list.add(new ArrayList<>(tempList));
+    for (int i = start; i < nums.length; i++) {
+        tempList.add(nums[i]);
+        backtrack(list, tempList, nums, i + 1);
+        tempList.remove(tempList.size() - 1);
+    }
+}
+
+    // for arr containing duplicate values..
+public void backtrack2(List<List<Integer>> list, List<Integer> tempList, int[] nums,
+            int start) {
+        list.add(new ArrayList<>(tempList));
+        for (int i = start; i < nums.length; i++) {
+            if (i > start && nums[i] == nums[i - 1])
+                continue; // skip duplicates
+            tempList.add(nums[i]);
+            backtrack2(list, tempList, nums, i + 1);
+            tempList.remove(tempList.size() - 1);
+        }
+    }
+
+    
+
+
 
 
     public static void main(String[] args) {

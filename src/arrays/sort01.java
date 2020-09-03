@@ -1,8 +1,34 @@
 
 package arrays;
 
-public class sort01{
+public class sort01 {
 
+    
+    public static void helper2(int[] arr) {
+        
+
+        int l = 0;
+        int h = arr.length - 1;
+
+        while (l < h) {
+
+
+            if (arr[l] == 0) {
+                l++;
+            } else if (arr[h] == 1) {
+                h--;
+            } else if (arr[l] == 1 && arr[h] == 0) {
+
+                int temp = arr[l];
+                arr[l] = arr[h];
+                arr[h] = temp;
+            }
+
+
+
+        }
+
+    }
 
 public static void main(String[] args) {
     
