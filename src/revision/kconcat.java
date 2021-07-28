@@ -1,7 +1,7 @@
 
 package revision;
 
-import java.util.*;
+import java.util.Scanner;
 
 class Codechef {
 

@@ -1,6 +1,7 @@
 package Prep;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
 // https://www.hackerearth.com/practice/algorithms/sorting/bubble-sort/practice-problems/algorithm/the-best-player-1/editorial/
 

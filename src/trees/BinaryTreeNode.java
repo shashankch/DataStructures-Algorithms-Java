@@ -2,15 +2,18 @@ package trees;
 
 public class BinaryTreeNode<T> {
 
-    public T data;
 
-    public BinaryTreeNode<T> left;
-    public BinaryTreeNode<T> right;
 
-    public BinaryTreeNode(T data) {
+        public T data;
 
-        this.data = data;
+        public trees.BinaryTreeNode<T> left;
+        public trees.BinaryTreeNode<T> right;
+        trees.BinaryTreeNode<T> random;
+        public BinaryTreeNode(T data) {
 
-    }
+            this.data = data;
+
+        }
+
 
 }
