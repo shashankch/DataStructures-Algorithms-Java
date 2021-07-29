@@ -2,13 +2,14 @@ package trees;
 
 import java.util.Scanner;
 
-class Node {
-    int data;
+class Node<T> {
+    T data;
     Node left;
     Node right;
     Node parent;
+    Node next;
 
-    Node(int data, Node left, Node right) {
+    Node(T data, Node left, Node right) {
         this.data = data;
         this.left = left;
         this.right = right;
