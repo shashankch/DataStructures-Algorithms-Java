@@ -55,6 +55,11 @@ public class MedianBST {
     }
 
     public static int median(BinaryTreeNode<Integer> root) {
+
+        if(root==null){
+            return 0;
+        }
+
         int nodes=count(root);
         boolean even=false;
         if(nodes%2==0){
@@ -98,7 +103,7 @@ public class MedianBST {
                 else{
 
                     pr.right=null;
-
+                   // prev=pr;
                     count++;
 
 
@@ -121,7 +126,7 @@ public class MedianBST {
 
         }
 
-        return 0;
+        return -1;
     }
 
 }
