@@ -73,12 +73,7 @@ public class cloneBT {
         
         helper3(root.left,croot.left);
         helper3(root.right,croot.right);
-            
-        
-        
-        
-        
-        
+
     }
 
     public static BinaryTreeNode<Integer> clonedTree(BinaryTreeNode<Integer> root) {

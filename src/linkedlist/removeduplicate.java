@@ -4,6 +4,17 @@ import java.util.HashMap;
 
 public class removeduplicate {
 
+    //delete node in LL
+    public static void deleteNode(LinkedListNode<Integer> node) {
+
+        int val=node.next.data;
+
+        node.data=val;
+        node.next=node.next.next;
+
+
+    }
+
     public static node rdup(node head) {
 
         node temp = head;
