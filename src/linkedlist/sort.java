@@ -2,6 +2,70 @@ package linkedlist;
 
 public class sort {
 
+
+    public static LinkedListNode<Integer> deleteIthNodeRec(LinkedListNode<Integer> head, int i){
+
+        if(head==null){
+
+            return head;
+        }
+
+
+        if(i==0){
+
+            return head.next;
+        }
+
+        LinkedListNode<Integer>smallhead=deleteIthNodeRec(head.next,i-1);
+
+        head.next=smallhead;
+
+        return head;
+
+    }
+    public static LinkedListNode<Integer> reverse_R(LinkedListNode<Integer> head) {
+
+
+        if(head==null || head.next==null){
+
+            return head;
+        }
+
+
+        LinkedListNode<Integer> smallhead=reverse_R(head.next);
+
+        LinkedListNode<Integer> temp=head;
+        temp.next.next=head;
+
+        temp.next=null;
+
+
+        return smallhead;
+
+
+
+
+    }
+
+
+public static int printMiddel(LinkedListNode<Integer> head) {
+
+    if(head==null || head.next==null){
+        return head.data;
+    }
+    LinkedListNode<Integer> slow=head;
+    LinkedListNode<Integer> fast=head.next;
+
+        while(fast!=null && fast.next!=null){
+
+        fast=fast.next.next;
+        slow=slow.next;
+
+
+    }
+        return slow.data;
+
+}
     public static node reverse(node head) {
 
         if (head == null || head.next == null) {
@@ -103,6 +167,71 @@ public class sort {
         return merge(rev, head);
 
     }
+
+
+    public static int length(LinkedListNode<Integer>head){
+
+        LinkedListNode<Integer>temp=head;
+        if(head==null){
+            return 0;
+        }
+
+        return 1+length(head.next);
+
+    }
+
+    public static LinkedListNode<Integer> bubbleSort(LinkedListNode<Integer> head )
+    {
+
+        int n=length(head);
+
+        for(int i=0;i<n-1;i++){
+
+            LinkedListNode<Integer>prev=null;
+            LinkedListNode<Integer> curr=head;
+
+            for(int j=0;j<n-i-1;j++){
+
+                if(curr.data<=curr.next.data){
+
+                    prev=curr;
+                    curr=curr.next;
+
+                }
+
+                else{
+                    if(prev!=null){
+
+                        LinkedListNode<Integer> fwd=curr.next;
+                        prev.next=fwd;
+                        curr.next=fwd.next;
+                        fwd.next=curr;
+                        prev=fwd;
+                    }
+                    else{
+
+                        LinkedListNode<Integer> fwd=curr.next;
+
+                        curr.next=fwd.next;
+                        fwd.next=curr;
+                        head=fwd;
+                        prev=fwd;
+
+                    }
+
+
+                }
+
+            }
+
+
+        }
+
+
+        return head;
+
+    }
+
 
     public static void main(String[] args) {
 

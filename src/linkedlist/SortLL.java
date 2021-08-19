@@ -18,7 +18,7 @@ public class SortLL {
 
 
 
-    public class Solution {
+
 
         public static DoublyLinkedListNode<Integer>  merge(DoublyLinkedListNode<Integer>head1,DoublyLinkedListNode<Integer>head2){
 
@@ -155,4 +155,4 @@ public class SortLL {
         }
 
     }
-}
+
