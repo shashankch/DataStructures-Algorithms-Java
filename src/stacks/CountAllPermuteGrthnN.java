@@ -44,4 +44,38 @@ public class CountAllPermuteGrthnN {
 
 
     }
+
+
+        public static boolean checkSmallest(int n){
+
+            int prev=9;
+            while(n>0){
+
+                int curr=n%10;
+                if(prev<curr) {
+                    return false;
+                }
+
+                prev=curr;
+                n/=10;
+
+            }
+
+            return true;
+        }
+
+
+
+
+        public static int permutations2(int n) {
+
+            int count=0;
+            for(int i=1;i<=n;i++){
+                if(checkSmallest(i)){
+                    count++;
+                }
+            }
+
+    return count;
+        }
 }
