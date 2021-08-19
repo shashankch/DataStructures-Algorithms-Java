@@ -5,7 +5,7 @@ public class Check {
     public static void main(String[] args) {
 
         String arr[] = {"JSN|Fuse", "JSN|TransID101", "JSN|TransID102", "RECON_RESULT"};
-    int count=0;
+        int count = 0;
         for (String obj : arr) {
             if (obj.equals("JSN|Fuse")) {
 
@@ -15,9 +15,11 @@ public class Check {
             }
         }
 
-        System.out.println("count:"+count);
+        System.out.println("count:" + count);
 
     }
+
+    
 
 
 }
