@@ -36,20 +36,10 @@ public class intersection{
                 }
             
             }
-            
-
-
 
         }
 
 
-
-
-
-
     }
-
-
-
 
 }
