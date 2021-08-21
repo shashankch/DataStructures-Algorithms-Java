@@ -1,7 +1,278 @@
 package hashmaps;
 
 import java.util.*;
+import java.util.Map;
+
 public class practiceProblems {
+
+    // find if ptr is anagram in all the substring of str find all the start indices in str.
+    public static ArrayList<Integer> findAnagramsIndices(String str,int n,String ptr, int m){
+
+        int fstr[]=new int[26];
+        int fptr[]=new int[26];
+
+        Arrays.fill(fptr,0);
+        Arrays.fill(fstr,0);
+
+        ArrayList<Integer>anagramIndices=new ArrayList<>();
+
+        for(int i=0;i<m;i++){
+
+            fptr[ptr.charAt(i)-'A']+=1;
+            fstr[str.charAt(i)-'A']+=1;
+
+        }
+
+        boolean check=true; // check if starting index forms anagram
+        for(int j=0;j<26;j++){
+
+
+            if(fptr[j]!=fstr[j]){
+                check=false;
+                break;
+            }
+        }
+
+        if(check){
+
+            anagramIndices.add(0);
+        }
+
+        for(int i=m;i<n;i++){
+
+            fstr[str.charAt(i)-'A']+=1;
+            fstr[str.charAt(i-m)-'A']-=1;
+
+            check=true;
+            for(int j=0;j<26;j++){
+
+
+                if(fptr[j]!=fstr[j]){
+                    check=false;
+                    break;
+                }
+            }
+
+            if(check){
+
+                anagramIndices.add(i-m+1);
+            }
+
+        }
+
+        return anagramIndices;
+    }
+
+    public int longestSubstringwithKdistinctChar(String str,int k,int n){
+
+        int []freq=new int[26];
+        Set<Character> window=new HashSet<Character>();
+        int size=-1;
+
+        for(int low=0,high=0;high<n;high++) {
+            window.add(str.charAt(high));
+            freq[str.charAt(high) - 'a']++;
+
+            while (window.size() > k) {
+
+                if (--freq[str.charAt(low) - 'a'] == 0) {
+                    window.remove(str.charAt(low));
+                }
+                low++;
+            }
+            if (size < high - low + 1 && window.size() == k) {
+                size = high - low + 1;
+            }
+        }
+            return size;
+
+    }
+
+    public static int longestSubstringwithoutRepeat(String str){
+
+        if(str.length()==0){
+            return 0;
+        }
+        HashMap<Character,Integer>mp=new HashMap<>();
+        int i=0,j=0;
+        while(j<str.length() && mp.get(str.charAt(j))==null){
+            mp.put(str.charAt(j),j);
+            j++;
+        }
+        int length=j-i;
+        while(j<str.length() && i<str.length()){
+
+            while(i<str.length() && str.charAt(i)!=str.charAt(j)){
+
+                mp.remove(str.charAt(i));
+                i++;
+            }
+            mp.remove(str.charAt(i));
+            i++;
+            while(j<str.length() && mp.get(str.charAt(j))==null){
+                mp.put(str.charAt(j),j);
+                j++;
+            }
+
+            length=(j-i>length?j-i:length);
+
+        }
+
+        return length;
+
+    }
+
+
+    // recurring sequence of digits when fraction is converted into decimal
+    public static String recurr(int num, int den) {
+
+        HashMap<Integer,Integer>mp=new HashMap<>();
+        int rem=num%den;
+        String res="";
+        while(rem!=0 && mp.containsKey(rem)==false){
+            mp.put(rem,rem);
+            rem*=10;
+            res+=(rem/den);
+            rem=rem%den;
+        }
+
+        return rem==0?"":res;
+    }
+
+
+    // group string with having shifted version of each other
+    public static String findDif(String str){
+
+        String res="";
+        for(int i=1;i<str.length();i++){
+
+            int diff=str.charAt(i)-str.charAt(i-1);
+            if(diff<0){
+                diff+=26;
+            }
+
+            res+=(diff+'a');
+
+        }
+
+
+        return res;
+
+
+
+    }
+
+    public static void grouping(String[] arr, int n) {
+
+        HashMap<String,ArrayList<String> >mp=new HashMap<>();
+
+        for(int i=0;i<arr.length;i++){
+
+            String diff=findDif(arr[i]);
+            // System.out.println(diff);
+            if(mp.containsKey(diff)){
+
+                ArrayList<String>temp=mp.get(diff);
+                temp.add(arr[i]);
+                mp.put(diff,temp);
+            }
+            else{
+
+                ArrayList<String>temp=new ArrayList<>();
+                temp.add(arr[i]);
+                mp.put(diff,temp);
+            }
+
+        }
+
+        for(Map.Entry<String,ArrayList<String> >entry:mp.entrySet()){
+
+            ArrayList<String>temp=entry.getValue();
+
+            for(int i=0;i<temp.size();i++){
+
+                System.out.print(temp.get(i)+" ");
+            }
+
+            System.out.println();
+        }
+
+
+    }
+
+    //divide into pairs where sum of every pair is divisible by k
+    //all remainders (use (arr[i] % k)+k)%k for handling the case of negative integers as well).
+    public static boolean ispairexist(int[] arr, int n, int k) {
+
+        if(n%2!=0){
+
+            return false;
+        }
+        HashMap<Integer,Integer>mp=new HashMap<>();
+        for(int i=0;i<n;i++){
+            int mod=arr[i]%k;
+            if(mp.containsKey(mod)){
+                mp.put(mod,mp.get(mod)+1);
+            }
+            else{
+                mp.put(mod,1);
+            }
+        }
+        for(int i=0;i<n;i++){
+            int mod=arr[i]%k;
+            if(mod==0){
+                if(mp.get(mod)%2!=0){
+                    return false;
+                }
+            }
+            else if(2*mod==k){
+                if(mp.get(mod)%2!=0){
+                    return false;
+                }
+            }
+            else{
+                if(mp.get(k-mod)!=mp.get(mod)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
+    public static void itineary(HashMap<String, String> input) {
+
+        HashMap<String,String>rev=new HashMap<>();
+
+
+        for(Map.Entry<String,String>entry:input.entrySet()){
+
+            rev.put(entry.getValue(),entry.getKey());
+
+
+        }
+
+        String start="";
+        for(Map.Entry<String,String>entry:input.entrySet()){
+
+            if(!rev.containsKey(entry.getKey())){
+
+                start=entry.getKey();
+                break;
+            }
+
+
+        }
+         while(input.containsKey(start)==true){
+
+            System.out.println(start+" -> "+input.get(start));
+
+            start=input.get(start);
+
+        }
+
+
+    }
 
     public static int lengthOfLongestSubsetWithZeroSum(ArrayList<Integer> arr)
     {
