@@ -70,6 +70,7 @@ public class maxRectangleArea {
 
         int mat[][]=new int[10][10];
         int mx = 0;
+        int n=mat.length,m=mat[0].length;
 
         for (int i = 1; i < n; i++) {
 
